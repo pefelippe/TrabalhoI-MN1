@@ -1,10 +1,3 @@
-/*
-* Autor: Pedro Felippe - 418806 
-* Repositório: https://github.com/pefelippe/MN1-UFC
-* Cadeira: Métodos Numéricos I
-* Professor: Joaquim Bento
-*/
-
 #include <iostream>
 #include <stdlib.h>
 #include <iomanip>
