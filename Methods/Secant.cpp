@@ -15,15 +15,17 @@ void Secant::setInput(float a, float b, int iter)
 
 void Secant::calculateRoot(const function<float(float)> &f)
 {
+    cout << "============ METODO DA SECANTE =============\n";
+
     if (fabs(f(x0)) < e1)
     {
-        cout << "Raíz: " << x0 << endl;
+        cout << "| Raíz: " << x0 << endl;
         return;
     }
 
     if (fabs(f(x1)) < e1 || fabs(x1 - x0) < e2)
     {
-        cout << "Raíz: " << x1 << endl;
+        cout << "| Raíz: " << x1 << endl;
         return;
     }
 
@@ -37,7 +39,7 @@ void Secant::calculateRoot(const function<float(float)> &f)
 
         if (fabs(f(x2)) < e1 || fabs(x2 - x1) < e2 || k >= iterMax)
         {
-            cout << "Raíz: " << x2 << endl;
+            cout << "| Raíz: " << x2 << endl;
             return;
         }
 
