@@ -33,16 +33,13 @@ int main()
         cout << "\nEscolha uma opcao: "; cin >> option;
         cout << "\n";
         
-        Secant secant;
-
-        switch (option) {
-            case 3:
-                secant.setInput(x0, x1, iterMax);
-                secant.setError(ERROR);
-                secant.calculateRoot(getFunction2);
-                break;
-            default:
-                break;
+        if(option == 3) {
+            Secant secant;
+            secant.setInput(x0, x1, iterMax);
+            secant.setError(ERROR);
+            secant.calculateRoot(getFunction2);
+        } else if (option == 0) {
+            exit(1);
         }
 
         cout << "\nDeseja continuar? 1 - continuar    0 - sair" << endl;
