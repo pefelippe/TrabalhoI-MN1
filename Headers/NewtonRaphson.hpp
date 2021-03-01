@@ -2,9 +2,9 @@
 
 class NewtonRaphson
 {
-    float x0, x1, f0, f1, g0, error;
 
 public:
-    void setError(float newError);
+    float x0, x1, error, intermax, raiz, qtdInter = 0;
+    void setInput(float x, int iter, float newError);
     void calculateRoot(const function<float(float)> &f, const function<float(float)> &g);
 };

@@ -1,43 +1,42 @@
 #include "../Headers/NewtonRaphson.hpp"
 
-void NewtonRaphson::setError(float newError)
+void NewtonRaphson::setInput(float x, int iter, float newError)
 {
+    x0 = x;
+    intermax = iter;
     error = newError;
 }
 
 void NewtonRaphson::calculateRoot(const function<float(float)> &f, const function<float(float)> &g)
 {
-    int interMax;
+    cout << "============ METODO NEWTON =============\n";
 
-    cout << "X0: ";
-    cin >> x0;
-    cout << "Intermax: ";
-    cin >> interMax;
-
-    if (abs(f(x0) < error))
+    if (abs(f(x0)) < error)
     {
-        cout << "Root: " << x0 << endl;
+        raiz = x0;
+        cout << "Raíz: " << x0 << endl;
         return;
     }
 
     int k = 1;
-
-    do
+    while (true)
     {
-        x1 = x0 - f0 / g0;
+
+        x1 = x0 - (f(x0) / g(x0));
 
         cout << "Iteration " << k
              << "\t| x = " << x1
              << "\t| f(x) = " << f(x1) << endl;
 
-        if (abs(f(x1)) < error || abs(x1 - x0) < error || k > interMax)
+        if ((abs(f(x1) < error) || abs(x1 - x0) < error) || k >= intermax)
         {
+            raiz = x1;
+            qtdInter = k;
             cout << "Root: " << x1 << endl;
             return;
         }
 
         x0 = x1;
         k++;
-
-    } while (true);
+    }
 }

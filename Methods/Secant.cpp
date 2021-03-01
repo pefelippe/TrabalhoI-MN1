@@ -1,29 +1,29 @@
 #include "../Headers/Secant.hpp"
 
-void Secant::setError(float newError)
+void Secant::setInput(float x, float b, int iter, float newError)
 {
+    x0 = x;
+    x1 = b;
+    iterMax = iter;
     e1 = newError;
     e2 = newError;
 }
 
-void Secant::setInput(float a, float b, int iter)
-{
-    x0 = a;
-    x1 = b;
-    iterMax = iter;
-}
-
 void Secant::calculateRoot(const function<float(float)> &f)
 {
+    cout << "============ METODO DA SECANTE =============\n";
+
     if (fabs(f(x0)) < e1)
     {
-        cout << "Raíz: " << x0 << endl;
+        raiz = x0;
+        cout << "| Raíz: " << x0 << endl;
         return;
     }
 
     if (fabs(f(x1)) < e1 || fabs(x1 - x0) < e2)
     {
-        cout << "Raíz: " << x1 << endl;
+        raiz = x1;
+        cout << "| Raíz: " << x1 << endl;
         return;
     }
 
@@ -37,7 +37,9 @@ void Secant::calculateRoot(const function<float(float)> &f)
 
         if (fabs(f(x2)) < e1 || fabs(x2 - x1) < e2 || k >= iterMax)
         {
-            cout << "Raíz: " << x2 << endl;
+            qtdInter = k;
+            raiz = x2;
+            cout << "| Raíz: " << x2 << endl;
             return;
         }
 
